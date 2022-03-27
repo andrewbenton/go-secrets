@@ -14,12 +14,12 @@ import (
     "encoding/json"
     "fmt"
 
-    gs "github.com/andrewbenton/go-secrets"
+    secret "github.com/andrewbenton/go-secrets"
 )
 
 type myConfig struct {
-    Username string            `json:"username"`
-    Password gs.Secret[string] `json:"password"`
+    Username string                `json:"username"`
+    Password secret.Secret[string] `json:"password"`
 }
 
 func main() {
@@ -32,7 +32,10 @@ func main() {
 
     // secret is hidden when marshaling
     data, err := json.Marshal(cfg)
-    if err != nil { panic(err) }
+    if err != nil {
+        panic(err)
+    }
+
     fmt.Println(string(data))
 
     // recursive reflection based printing won't reveal the secret
@@ -45,7 +48,7 @@ func main() {
     fmt.Println(cfg.Password)
 
     // secret can be directly accessed
-    fmt.Println(cfg.Password.Value)
+    fmt.Println(cfg.Password.Get())
 }
 ```
 
