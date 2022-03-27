@@ -1,0 +1,20 @@
+---
+linters-settings:
+  misspell:
+    locale: US
+
+linters:
+  enable:
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - gocognit
+    - goconst
+    - goerr113
+    - gosec
+    - misspell
+    - promlinter
+    - stylecheck
+    - unconvert
+    - whitespace
+    - wsl
