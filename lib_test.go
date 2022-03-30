@@ -197,6 +197,58 @@ func TestSecret_Extras(t *testing.T) {
 	})
 }
 
+func TestSecret_Set(t *testing.T) {
+	t.Run("string", func(t *testing.T) {
+		s := Make("")
+
+		require.Equal(t, "", s.Get())
+
+		s.Set("a")
+
+		require.Equal(t, "a", s.Get())
+	})
+
+	t.Run("int", func(t *testing.T) {
+		s := Make(0)
+
+		require.Equal(t, 0, s.Get())
+
+		s.Set(1)
+
+		require.Equal(t, 1, s.Get())
+	})
+
+	t.Run("float64", func(t *testing.T) {
+		s := Make(0.0)
+
+		require.Equal(t, 0.0, s.Get())
+
+		s.Set(3.0)
+
+		require.Equal(t, 3.0, s.Get())
+	})
+
+	t.Run("array", func(t *testing.T) {
+		s := Make([]string{})
+
+		require.Len(t, s.Get(), 0)
+
+		s.Set([]string{"a"})
+
+		require.Equal(t, []string{"a"}, s.Get())
+	})
+
+	t.Run("map", func(t *testing.T) {
+		s := Make(map[string]string{})
+
+		require.Len(t, s.Get(), 0)
+
+		s.Set(map[string]string{"a": "aay"})
+
+		require.Equal(t, map[string]string{"a": "aay"}, s.Get())
+	})
+}
+
 var testString = "12341234-1234-1234-1234-123412341234"
 
 func BenchmarkJsonMarshal(b *testing.B) {
