@@ -58,11 +58,13 @@ Performance
 Performance isn't the primary concern of this library, however it's important
 to recognize that the additional functionality required to keep secrets hidden
 costs more.  The tests below contrast the JSON marshaling and unmarshaling
-performance of a `string` vs a `Secret[string]`.
+performance of a `string` vs a `Secret[string]`.  These results were executed
+against an AMD Ryzen 9 7900X running in 105W Eco mode.
 
+Go 1.22.0:
 ```
-BenchmarkJsonMarshal-32             	 3077210	       384.4 ns/op
-BenchmarkJsonUnmarshal-32           	 1799340	       664.4 ns/op
-BenchmarkSecret_MarshalJSON-32      	 1720758	       732.2 ns/op
-BenchmarkSecret_UnmarshalJSON-32    	  710397	      1537   ns/op
+BenchmarkJsonMarshal-24                 10483046               104.5 ns/op
+BenchmarkJsonUnmarshal-24                6155026               175.8 ns/op
+BenchmarkSecret_MarshalJSON-24           7724763               147.7 ns/op
+BenchmarkSecret_UnmarshalJSON-24         3029302               397.4 ns/op
 ```
