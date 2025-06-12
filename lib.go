@@ -10,7 +10,7 @@ import (
 func Make[T any](value T) Secret[T] {
 	ret := Secret[T]{}
 
-	// This isn't particulary efficient, however it does seem to prevent the
+	// This isn't particularly efficient, however it does seem to prevent the
 	// value from ever being printed unintentionally.
 	s := &seal[T]{value: value}
 

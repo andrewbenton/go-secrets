@@ -1,20 +1,37 @@
----
-linters-settings:
-  misspell:
-    locale: US
-
+version: "2"
 linters:
   enable:
     - asciicheck
     - bidichk
     - bodyclose
+    - err113
     - gocognit
     - goconst
-    - goerr113
     - gosec
     - misspell
     - promlinter
-    - stylecheck
+    - staticcheck
     - unconvert
     - whitespace
     - wsl
+  settings:
+    misspell:
+      locale: US
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
