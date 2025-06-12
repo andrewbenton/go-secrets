@@ -5,9 +5,9 @@ go 1.18
 replace github.com/andrewbenton/go-secrets => ../..
 
 require (
-	github.com/andrewbenton/go-secrets v0.0.4
+	github.com/andrewbenton/go-secrets v0.0.5
 	github.com/mitchellh/mapstructure v1.5.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
